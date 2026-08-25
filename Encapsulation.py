@@ -4,23 +4,23 @@
 # A method deposit(amount) to add money
 # A method withdraw(amount) to deduct money
 # A method get_balance() to display the current balance
-# class BankAccount:
-#     def __init__(self,balance):
-#         self.__balance=balance
+class BankAccount:
+    def __init__(self,balance):
+        self.__balance=balance
         
 
-#     def Deposit(self,amount):
-#         if amount > 0:
-#             self.__balance += amount
-#             return self.__balance
+    def Deposit(self,amount):
+        if amount > 0:
+            self.__balance += amount
+            return self.__balance
 
-#     def Withdraw(self,amount):
-#         if self.amount > 0 and self.amount <= self.__balance:
-#             self.__balance-=self.amount
-#             return self.__balance
-# bank_account=(BankAccount(1000))
-# print(bank_account.Deposit(500))
-# print(bank_account.Withdraw(500))
+    def Withdraw(self,amount):
+        if self.amount > 0 and self.amount <= self.__balance:
+            self.__balance-=self.amount
+            return self.__balance
+bank_account=(BankAccount(1000))
+print(bank_account.Deposit(500))
+print(bank_account.Withdraw(500))
 
 #Create a class Student
 # Create a private variable __marks.
@@ -36,13 +36,13 @@ class Student:
     def __init__(self,marks):
         self.__marks=marks
 
-    def set_marks(self,marks):
+    def set_marks(self,marks): #setter method
         if 0 <= marks <= 100:
             self.__marks = marks
         else:
             print("Invalid marks")
 
-    def get_marks(self):
+    def get_marks(self): #getter method
         return self.__marks
 student=Student(50)
 print(student.get_marks())
