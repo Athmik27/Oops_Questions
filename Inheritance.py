@@ -6,22 +6,22 @@
 # Student should have:
 # An __init__() method that accepts name and course
 # A method display_course() that prints the course
-# class Person:
-#     def __init__(self,name):
-#         self.name=name
-#     def display_name(self):
-#         print("The name of the student is:",self.name)
+class Person:
+    def __init__(self,name):
+        self.name=name
+    def display_name(self):
+        print("The name of the student is:",self.name)
         
-# class Student(Person):
-#     def __init__(self,name,course):
-#             self.name=name
-#             self.course=course
-#     def display_course(self):
-#         print("The course selected by an student is:",self.course)
-# person=Person("Athmik")
-# person.display_name()
-# student = Student("Athmik", "Python")
-# student.display_course()
+class Student(Person):
+    def __init__(self,name,course):
+            self.name=name
+            self.course=course
+    def display_course(self):
+        print("The course selected by an student is:",self.course)
+person=Person("Athmik")
+person.display_name()
+student = Student("Athmik", "Python")
+student.display_course()
 
 # Create a parent class Person:
 # __init__() should accept name
@@ -32,31 +32,31 @@
 # Use super() to initialize name
 # Store course in self.course
 # Create display_course()
-# class Person():
-#     def __init__(self,name):
-#         self.name=name
-#     def display_name(self):
-#         print("the name of an student is :",self.name)
-# class Student(Person):
-#     def __init__(self,name,course):
-#         super().__init__(name)
-#         self.course=course
-#     def display_course(self):
-#         print("the course selected by the student is :",self.course)
-# person=Person("Athmik")
-# person.display_name()
-# student=Student("Athmik","Python")
-# student.display_course()
+class Person():
+    def __init__(self,name):
+        self.name=name
+    def display_name(self):
+        print("the name of an student is :",self.name)
+class Student(Person):
+    def __init__(self,name,course):
+        super().__init__(name)
+        self.course=course
+    def display_course(self):
+        print("the course selected by the student is :",self.course)
+person=Person("Athmik")
+person.display_name()
+student=Student("Athmik","Python")
+student.display_course()
 
 #Method Overriding
-# class Animal:
-#     def sound(self):
-#         print("Bark")
-# class Dog(Animal):
-#     def sound(self):
-#         print('Dog Barks')
-# dog=Dog()
-# dog.sound()
+class Animal:
+    def sound(self):
+        print("Bark")
+class Dog(Animal):
+    def sound(self):
+        print('Dog Barks')
+dog=Dog()
+dog.sound()
 
 # Multiple Inheritance
 # Create a parent class Father:
@@ -68,17 +68,17 @@
 # Create a child class Child:
 # Inherit from both Father and Mother
 # Do not create any additional methods
-# class Father:
-#     def father_skill(self):
-#         print("Skill of an Father is Driving the Car")
-# class Mother:
-#     def mother_skill(self):
-#         print('Mothers skill is Cooking')
-# class Child(Father,Mother):
-#     pass
-# child=Child()
-# child.father_skill()
-# child.mother_skill()
+class Father:
+    def father_skill(self):
+        print("Skill of an Father is Driving the Car")
+class Mother:
+    def mother_skill(self):
+        print('Mothers skill is Cooking')
+class Child(Father,Mother):
+    pass
+child=Child()
+child.father_skill()
+child.mother_skill()
 
 # Multilevel Inhertance
 # Create a parent class Grandparent:
@@ -92,41 +92,41 @@
 # It should print "Child method"
 # Create an object of Child.
 # Call all three methods using the Child object.
-# class GrandParent:
-#     def grandparent_method(self):
-#         print("GrandParent Method")
+class GrandParent:
+    def grandparent_method(self):
+        print("GrandParent Method")
 
-# class Parent(GrandParent):
-#         def parent_method(self):
-#              print("Parent Method")
+class Parent(GrandParent):
+        def parent_method(self):
+             print("Parent Method")
 
-# class Child(Parent):
-#      def child_method(self):
-#           print("child method")
-# child=Child()
-# child.grandparent_method()
-# child.parent_method()
+class Child(Parent):
+     def child_method(self):
+          print("child method")
+child=Child()
+child.grandparent_method()
+child.parent_method()
 
 #Heirarchial inheritance
-# class Vehicle:
-#     def start(self):
-#         print("Vehicle started")
+class Vehicle:
+    def start(self):
+        print("Vehicle started")
 
-# class Car(Vehicle):
-#     def drive(self):
-#         print("Car is driving")
+class Car(Vehicle):
+    def drive(self):
+        print("Car is driving")
 
-# class Bike(Vehicle):
-#     def ride(self):
-#         print("Bike is riding")
-# car = Car()
-# bike = Bike()
+class Bike(Vehicle):
+    def ride(self):
+        print("Bike is riding")
+car = Car()
+bike = Bike()
 
-# car.start()
-# car.drive()
+car.start()
+car.drive()
 
-# bike.start()
-# bike.ride()
+bike.start()
+bike.ride()
 
 
 
