@@ -10,23 +10,23 @@
 # Print "Cat meows"
 # Create one object of Dog and one object of Cat.
 # Call sound() for both objects.
-# class Animal:
-#     def method_sound(self):
-#         print("Animal makes an sound")
+class Animal:
+    def method_sound(self):
+        print("Animal makes an sound")
 
-# class Dog(Animal):
-#     def method_sound(self):
-#         print("Barks")
+class Dog(Animal):
+    def method_sound(self):
+        print("Barks")
 
-# class Cat(Animal):
-#     def method_sound(self):
-#         print("Meow")
+class Cat(Animal):
+    def method_sound(self):
+        print("Meow")
 
-# dog=Dog()
-# dog.method_sound()
+dog=Dog()
+dog.method_sound()
 
-# cat=Cat()
-# cat.method_sound()
+cat=Cat()
+cat.method_sound()
 
 
 # Create a parent class Animal:
