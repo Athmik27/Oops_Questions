@@ -44,26 +44,26 @@ cat.method_sound()
 # Call its sound() method
 # Create objects of Dog and Cat.
 # Pass both objects to make_sound().
-# class Animal:
-#     def Sound(self):
-#         print("Animal Sound")
+class Animal:
+    def Sound(self):
+        print("Animal Sound")
 
-# class Dog(Animal):
-#     def Sound(self) :
-#         print("Bark") 
+class Dog(Animal):
+    def Sound(self) :
+        print("Bark") 
 
-# class Cat(Animal):
-#     def Sound(self):
-#         print("Meow")
+class Cat(Animal):
+    def Sound(self):
+        print("Meow")
 
-# def make_sound(animal):
-#         animal.Sound()
+def make_sound(animal):
+        animal.Sound()
 
-# dog=Dog()
-# dog.Sound()
+dog=Dog()
+dog.Sound()
 
-# cat=Cat()
-# cat.Sound()
+cat=Cat()
+cat.Sound()
 
 # Create a class Duck:
 # Create a method speak()
@@ -78,23 +78,23 @@ cat.method_sound()
 # Pass both objects to make_speak(). 
 # Duck and Person should not inherit from each other.
 # This question is specifically testing duck typing.
-# class Duck:
-#      def speak(self):
-#           print("duck says quack")
+class Duck:
+     def speak(self):
+          print("duck says quack")
 
-# class Person:
-#      def speak(self):
-#           print("person says hello")
+class Person:
+     def speak(self):
+          print("person says hello")
 
-# def make_speak(obj):
-#      obj.speak() # duck typing is an concept which determines objects behaviour based on the method and attributes
+def make_speak(obj):
+     obj.speak() # duck typing is an concept which determines objects behaviour based on the method and attributes
 
 
-# duck=Duck()
-# person=Person()
+duck=Duck()
+person=Person()
 
-# duck.speak()
-# person.speak()
+duck.speak()
+person.speak()
 
 # operator overloading
 # Create a class Number:
@@ -102,36 +102,36 @@ cat.method_sound()
 # Store it in self.value
 # Implement __add__() to add two Number objects
 # # Return the result as a Number object
-# class Number:
-#     def __init__(self,number):
-#           self.number=number
+class Number:
+    def __init__(self,number):
+          self.number=number
 
-#     def __add__(self,value):
-#          return Number(self.number+value.number)
+    def __add__(self,value):
+         return Number(self.number+value.number)
 
-# num1=Number(10)
-# num2=Number(20)
+num1=Number(10)
+num2=Number(20)
 
-# result=num1+num2
+result=num1+num2
 
-# print(result.number)
+print(result.number)
 
 # Create a class Student:
 # __init__() should accept marks
 # Store it in self.marks
 # Implement __gt__() to compare the marks of two Student objects
 # Return True if the first student's marks are greater than the second student's marks
-# class Student:
-#     def __init__(self,marks):
-#         self.marks=marks
+class Student:
+    def __init__(self,marks):
+        self.marks=marks
 
-#     def __gt__(self,other):
-#         return self.marks>other.marks
+    def __gt__(self,other):
+        return self.marks>other.marks
 
-# student1=Student(85)
-# student2=Student(90)
+student1=Student(85)
+student2=Student(90)
 
-# print(student1>student2)
+print(student1>student2)
 
 # Create a class Calculator:
 # Create a method add()
@@ -140,28 +140,28 @@ cat.method_sound()
 # If three numbers are provided, return the sum of all three
 # Use default arguments to achieve this
 # Create a Calculator object and test:
-# class Calculator:
+class Calculator:
 
-#     def add(self,a,b,c=0):
-#         return a+b+c
+    def add(self,a,b,c=0):
+        return a+b+c
 
-# calculator=Calculator()
-# print(calculator.add(10,20))   
-# print(calculator.add(10,20,30))
+calculator=Calculator()
+print(calculator.add(10,20))   
+print(calculator.add(10,20,30))
 
 # Create a class Calculator:
 # Create a method add()
 # It should accept any number of numbers
 # Use *args
 # Return the sum of all the numbers
-# class Calculator:
+class Calculator:
 
-#     def add(self,*args):
-#         return sum(args)
+    def add(self,*args):
+        return sum(args)
     
-# calculator=Calculator()
-# print(calculator.add(10,20))
-# print(calculator.add(10,20,30))
+calculator=Calculator()
+print(calculator.add(10,20))
+print(calculator.add(10,20,30))
 
 
 # Create a class Rectangle:
