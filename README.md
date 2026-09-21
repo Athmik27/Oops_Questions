@@ -2290,3 +2290,2613 @@ For a fresher/entry-level Python placement interview, make sure you can answer t
 
 ---
 
+# Python OOPs —  Syntax & Coding Examples
+
+
+
+# 1. What is OOP?
+
+OOP stands for:
+
+> **Object-Oriented Programming**
+
+It is a programming approach based on **classes and objects**.
+
+The four major pillars are:
+
+```text
+Encapsulation
+Abstraction
+Inheritance
+Polymorphism
+```
+
+---
+
+# 2. Basic Class Syntax
+
+## Syntax
+
+```python
+class ClassName:
+
+    # variables
+    # methods
+    pass
+```
+
+Example:
+
+```python
+class Student:
+
+    name = "Rahul"
+    age = 20
+```
+
+---
+
+# 3. Creating Objects
+
+## Syntax
+
+```python
+object_name = ClassName()
+```
+
+Example:
+
+```python
+class Student:
+    pass
+
+
+s1 = Student()
+s2 = Student()
+```
+
+Here:
+
+```text
+Student → Class
+s1      → Object
+s2      → Object
+```
+
+---
+
+# 4. Constructor
+
+Python commonly uses `__init__()` to initialize an object.
+
+## Syntax
+
+```python
+class ClassName:
+
+    def __init__(self, parameters):
+        self.variable = parameters
+```
+
+Example:
+
+```python
+class Student:
+
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+
+s1 = Student("Rahul", 20)
+
+print(s1.name)
+print(s1.age)
+```
+
+Output:
+
+```text
+Rahul
+20
+```
+
+---
+
+# 5. self
+
+`self` refers to the current object.
+
+Example:
+
+```python
+class Student:
+
+    def __init__(self, name):
+        self.name = name
+
+    def display(self):
+        print(self.name)
+
+
+s1 = Student("Rahul")
+
+s1.display()
+```
+
+When:
+
+```python
+s1.display()
+```
+
+Python effectively passes `s1` as the instance to the method.
+
+---
+
+# 6. Instance Variables
+
+Instance variables belong to individual objects.
+
+```python
+class Student:
+
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+```
+
+Create objects:
+
+```python
+s1 = Student("Rahul", 20)
+s2 = Student("Anu", 21)
+```
+
+Now:
+
+```python
+print(s1.name)
+print(s2.name)
+```
+
+Output:
+
+```text
+Rahul
+Anu
+```
+
+Each object has its own instance data.
+
+---
+
+# 7. Instance Methods
+
+An instance method normally receives `self`.
+
+## Syntax
+
+```python
+class ClassName:
+
+    def method_name(self):
+        # code
+        pass
+```
+
+Example:
+
+```python
+class Student:
+
+    def __init__(self, name):
+        self.name = name
+
+    def display(self):
+        print("Name:", self.name)
+
+
+s = Student("Rahul")
+
+s.display()
+```
+
+---
+
+# 8. Class Variables
+
+A class variable is defined inside the class but outside instance methods.
+
+```python
+class Student:
+
+    college = "ABC College"
+
+    def __init__(self, name):
+        self.name = name
+```
+
+Usage:
+
+```python
+s1 = Student("Rahul")
+s2 = Student("Anu")
+
+print(s1.college)
+print(s2.college)
+```
+
+Both can access the class variable.
+
+---
+
+# 9. Class Methods
+
+Class methods use:
+
+```python
+@classmethod
+```
+
+and normally receive `cls`.
+
+## Syntax
+
+```python
+class ClassName:
+
+    @classmethod
+    def method_name(cls):
+        pass
+```
+
+Example:
+
+```python
+class Student:
+
+    college = "ABC College"
+
+    @classmethod
+    def change_college(cls, name):
+        cls.college = name
+
+
+Student.change_college("XYZ College")
+
+print(Student.college)
+```
+
+---
+
+# 10. Static Methods
+
+Static methods use:
+
+```python
+@staticmethod
+```
+
+They do not automatically receive `self` or `cls`.
+
+## Syntax
+
+```python
+class ClassName:
+
+    @staticmethod
+    def method_name(parameters):
+        pass
+```
+
+Example:
+
+```python
+class Calculator:
+
+    @staticmethod
+    def add(a, b):
+        return a + b
+
+
+print(Calculator.add(10, 20))
+```
+
+Output:
+
+```text
+30
+```
+
+---
+
+# 11. Encapsulation
+
+Encapsulation means:
+
+> Bundling data and methods together while controlling access to internal state.
+
+Example:
+
+```python
+class BankAccount:
+
+    def __init__(self, balance):
+        self.__balance = balance
+
+    def deposit(self, amount):
+
+        if amount > 0:
+            self.__balance += amount
+
+    def get_balance(self):
+        return self.__balance
+
+
+account = BankAccount(1000)
+
+account.deposit(500)
+
+print(account.get_balance())
+```
+
+Output:
+
+```text
+1500
+```
+
+---
+
+# 12. Public Variables
+
+Normal attributes are public by convention.
+
+```python
+class Student:
+
+    def __init__(self, name):
+        self.name = name
+```
+
+Access:
+
+```python
+s = Student("Rahul")
+
+print(s.name)
+```
+
+---
+
+# 13. Protected Variables
+
+A single underscore is used as a convention.
+
+```python
+class Student:
+
+    def __init__(self, marks):
+        self._marks = marks
+```
+
+Access:
+
+```python
+s = Student(90)
+
+print(s._marks)
+```
+
+Python does not strictly prevent this.
+
+---
+
+# 14. Private Variables
+
+Double underscore triggers name mangling.
+
+```python
+class Student:
+
+    def __init__(self, marks):
+        self.__marks = marks
+```
+
+Normally:
+
+```python
+s = Student(90)
+
+print(s.__marks)
+```
+
+will fail because the attribute is name-mangled.
+
+---
+
+# 15. Getters and Setters
+
+## Getter
+
+Used to retrieve data.
+
+```python
+def get_marks(self):
+    return self.__marks
+```
+
+## Setter
+
+Used to modify data.
+
+```python
+def set_marks(self, marks):
+    self.__marks = marks
+```
+
+Complete example:
+
+```python
+class Student:
+
+    def __init__(self, marks):
+        self.__marks = marks
+
+    def get_marks(self):
+        return self.__marks
+
+    def set_marks(self, marks):
+
+        if 0 <= marks <= 100:
+            self.__marks = marks
+        else:
+            print("Invalid marks")
+
+
+s = Student(80)
+
+print(s.get_marks())
+
+s.set_marks(90)
+
+print(s.get_marks())
+```
+
+---
+
+# 16. Property Decorator
+
+`@property` allows a method to behave like an attribute.
+
+```python
+class Student:
+
+    def __init__(self, marks):
+        self._marks = marks
+
+    @property
+    def marks(self):
+        return self._marks
+
+    @marks.setter
+    def marks(self, value):
+
+        if 0 <= value <= 100:
+            self._marks = value
+        else:
+            print("Invalid marks")
+```
+
+Usage:
+
+```python
+s = Student(80)
+
+print(s.marks)
+
+s.marks = 90
+```
+
+---
+
+# 17. Abstraction
+
+Abstraction means:
+
+> Hide implementation details and expose only necessary functionality.
+
+Python commonly implements abstraction using the `abc` module.
+
+```python
+from abc import ABC, abstractmethod
+```
+
+---
+
+# 18. Abstract Classes
+
+Syntax:
+
+```python
+from abc import ABC, abstractmethod
+
+
+class ClassName(ABC):
+
+    @abstractmethod
+    def method(self):
+        pass
+```
+
+Example:
+
+```python
+from abc import ABC, abstractmethod
+
+
+class Vehicle(ABC):
+
+    @abstractmethod
+    def start(self):
+        pass
+```
+
+---
+
+# 19. Abstract Methods
+
+An abstract method is declared using:
+
+```python
+@abstractmethod
+```
+
+Example:
+
+```python
+from abc import ABC, abstractmethod
+
+
+class Vehicle(ABC):
+
+    @abstractmethod
+    def start(self):
+        pass
+
+
+class Car(Vehicle):
+
+    def start(self):
+        print("Car starts")
+
+
+class Bike(Vehicle):
+
+    def start(self):
+        print("Bike starts")
+```
+
+Usage:
+
+```python
+car = Car()
+bike = Bike()
+
+car.start()
+bike.start()
+```
+
+Output:
+
+```text
+Car starts
+Bike starts
+```
+
+---
+
+# 20. Inheritance
+
+Inheritance allows a child class to reuse or extend a parent class.
+
+## Basic syntax
+
+```python
+class Parent:
+    pass
+
+
+class Child(Parent):
+    pass
+```
+
+Example:
+
+```python
+class Animal:
+
+    def eat(self):
+        print("Eating")
+
+
+class Dog(Animal):
+
+    def bark(self):
+        print("Barking")
+
+
+dog = Dog()
+
+dog.eat()
+dog.bark()
+```
+
+---
+
+# 21. Single Inheritance
+
+One parent → one child.
+
+```python
+class Animal:
+
+    def eat(self):
+        print("Eating")
+
+
+class Dog(Animal):
+
+    def bark(self):
+        print("Barking")
+```
+
+---
+
+# 22. Multilevel Inheritance
+
+Example:
+
+```text
+Grandparent
+     ↓
+   Parent
+     ↓
+   Child
+```
+
+Code:
+
+```python
+class Grandparent:
+
+    def house(self):
+        print("House")
+
+
+class Parent(Grandparent):
+
+    def car(self):
+        print("Car")
+
+
+class Child(Parent):
+
+    def bike(self):
+        print("Bike")
+
+
+c = Child()
+
+c.house()
+c.car()
+c.bike()
+```
+
+---
+
+# 23. Multiple Inheritance
+
+One child → multiple parents.
+
+```python
+class Father:
+
+    def skills(self):
+        print("Driving")
+
+
+class Mother:
+
+    def hobbies(self):
+        print("Painting")
+
+
+class Child(Father, Mother):
+    pass
+
+
+c = Child()
+
+c.skills()
+c.hobbies()
+```
+
+---
+
+# 24. Hierarchical Inheritance
+
+One parent → multiple children.
+
+```python
+class Animal:
+
+    def eat(self):
+        print("Eating")
+
+
+class Dog(Animal):
+
+    def bark(self):
+        print("Barking")
+
+
+class Cat(Animal):
+
+    def meow(self):
+        print("Meowing")
+```
+
+---
+
+# 25. Hybrid Inheritance
+
+Hybrid inheritance is a combination of inheritance types.
+
+Example:
+
+```python
+class A:
+    pass
+
+
+class B(A):
+    pass
+
+
+class C(A):
+    pass
+
+
+class D(B, C):
+    pass
+```
+
+This also introduces the diamond inheritance structure.
+
+---
+
+# 26. `super()`
+
+`super()` is used to access behavior from the next class in the MRO.
+
+## Parent constructor
+
+```python
+class Parent:
+
+    def __init__(self):
+        print("Parent")
+
+
+class Child(Parent):
+
+    def __init__(self):
+        super().__init__()
+        print("Child")
+
+
+c = Child()
+```
+
+Output:
+
+```text
+Parent
+Child
+```
+
+---
+
+## Parent method
+
+```python
+class Parent:
+
+    def display(self):
+        print("Parent")
+
+
+class Child(Parent):
+
+    def display(self):
+
+        super().display()
+
+        print("Child")
+
+
+c = Child()
+
+c.display()
+```
+
+---
+
+# 27. Method Overriding
+
+A child class provides its own implementation of a parent method.
+
+```python
+class Animal:
+
+    def sound(self):
+        print("Animal sound")
+
+
+class Dog(Animal):
+
+    def sound(self):
+        print("Bark")
+
+
+dog = Dog()
+
+dog.sound()
+```
+
+Output:
+
+```text
+Bark
+```
+
+---
+
+# 28. Method Overloading
+
+Python does not support traditional method overloading based only on different parameter lists.
+
+This:
+
+```python
+class Calculator:
+
+    def add(self, a):
+        return a
+
+    def add(self, a, b):
+        return a + b
+```
+
+does **not** create two overloads.
+
+The second definition replaces the first.
+
+---
+
+## Using Default Arguments
+
+```python
+class Calculator:
+
+    def add(self, a, b=0):
+        return a + b
+
+
+c = Calculator()
+
+print(c.add(10))
+print(c.add(10, 20))
+```
+
+---
+
+## Using `*args`
+
+```python
+class Calculator:
+
+    def add(self, *numbers):
+        return sum(numbers)
+
+
+c = Calculator()
+
+print(c.add(10))
+print(c.add(10, 20))
+print(c.add(10, 20, 30))
+```
+
+---
+
+# 29. Polymorphism
+
+Polymorphism means:
+
+> Same interface → different behavior.
+
+Example:
+
+```python
+class Dog:
+
+    def sound(self):
+        print("Bark")
+
+
+class Cat:
+
+    def sound(self):
+        print("Meow")
+
+
+dog = Dog()
+cat = Cat()
+
+dog.sound()
+cat.sound()
+```
+
+---
+
+# 30. Duck Typing
+
+Python cares about supported behavior rather than requiring an exact type.
+
+```python
+class Dog:
+
+    def sound(self):
+        print("Bark")
+
+
+class Cat:
+
+    def sound(self):
+        print("Meow")
+
+
+def make_sound(animal):
+
+    animal.sound()
+
+
+make_sound(Dog())
+make_sound(Cat())
+```
+
+---
+
+# 31. Operator Overloading
+
+Operator overloading allows custom objects to define operator behavior.
+
+Important methods:
+
+```text
+__add__()   +
+__sub__()   -
+__mul__()   *
+__truediv__() /
+__eq__()    ==
+__lt__()    <
+__gt__()    >
+```
+
+Example:
+
+```python
+class Number:
+
+    def __init__(self, value):
+        self.value = value
+
+    def __add__(self, other):
+        return self.value + other.value
+
+
+a = Number(10)
+b = Number(20)
+
+print(a + b)
+```
+
+Output:
+
+```text
+30
+```
+
+---
+
+# 32. Magic/Dunder Methods
+
+Magic methods have double underscores.
+
+Common methods:
+
+```text
+__init__()
+__str__()
+__repr__()
+__len__()
+__add__()
+__sub__()
+__eq__()
+__lt__()
+__gt__()
+__new__()
+```
+
+---
+
+## `__str__()`
+
+```python
+class Student:
+
+    def __init__(self, name):
+        self.name = name
+
+    def __str__(self):
+        return self.name
+
+
+s = Student("Rahul")
+
+print(s)
+```
+
+---
+
+## `__len__()`
+
+```python
+class Team:
+
+    def __init__(self, players):
+        self.players = players
+
+    def __len__(self):
+        return len(self.players)
+
+
+team = Team(["A", "B", "C"])
+
+print(len(team))
+```
+
+Output:
+
+```text
+3
+```
+
+---
+
+## `__eq__()`
+
+```python
+class Student:
+
+    def __init__(self, name):
+        self.name = name
+
+    def __eq__(self, other):
+        return self.name == other.name
+```
+
+---
+
+# 33. Composition
+
+Composition represents a strong HAS-A relationship.
+
+Example:
+
+```python
+class Engine:
+
+    def start(self):
+        print("Engine started")
+
+
+class Car:
+
+    def __init__(self):
+        self.engine = Engine()
+
+    def start(self):
+        self.engine.start()
+
+
+car = Car()
+
+car.start()
+```
+
+Relationship:
+
+```text
+Car HAS-A Engine
+```
+
+---
+
+# 34. Aggregation
+
+Aggregation is also a HAS-A relationship, but the contained object can exist independently.
+
+```python
+class Teacher:
+
+    def teach(self):
+        print("Teaching")
+
+
+class School:
+
+    def __init__(self, teacher):
+        self.teacher = teacher
+
+
+teacher = Teacher()
+
+school = School(teacher)
+
+school.teacher.teach()
+```
+
+---
+
+# 35. MRO
+
+MRO = **Method Resolution Order**
+
+It determines the order in which Python searches classes.
+
+Example:
+
+```python
+class A:
+    pass
+
+
+class B(A):
+    pass
+
+
+class C(B):
+    pass
+
+
+print(C.mro())
+```
+
+You can also use:
+
+```python
+print(C.__mro__)
+```
+
+Python uses **C3 linearization** for class MRO.
+
+---
+
+# 36. isinstance()
+
+Checks whether an object is an instance of a class or its subclasses.
+
+```python
+class Animal:
+    pass
+
+
+class Dog(Animal):
+    pass
+
+
+dog = Dog()
+
+print(isinstance(dog, Dog))
+print(isinstance(dog, Animal))
+```
+
+Output:
+
+```text
+True
+True
+```
+
+---
+
+# 37. issubclass()
+
+Checks whether a class is derived from another class.
+
+```python
+class Animal:
+    pass
+
+
+class Dog(Animal):
+    pass
+
+
+print(issubclass(Dog, Animal))
+```
+
+Output:
+
+```text
+True
+```
+
+---
+
+# 38. `is` vs `==`
+
+## `==`
+
+Checks equality.
+
+```python
+a = [1, 2]
+b = [1, 2]
+
+print(a == b)
+```
+
+Output:
+
+```text
+True
+```
+
+## `is`
+
+Checks object identity.
+
+```python
+print(a is b)
+```
+
+Usually:
+
+```text
+False
+```
+
+because `a` and `b` are different list objects.
+
+---
+
+# 39. `__new__()`
+
+`__new__()` is responsible for creating/returning a new instance.
+
+Example:
+
+```python
+class Student:
+
+    def __new__(cls):
+        print("Creating object")
+        return super().__new__(cls)
+
+    def __init__(self):
+        print("Initializing object")
+
+
+s = Student()
+```
+
+Output:
+
+```text
+Creating object
+Initializing object
+```
+
+Order:
+
+```text
+__new__()
+   ↓
+__init__()
+```
+
+---
+
+# 40. `__slots__`
+
+`__slots__` can restrict allowed instance attributes.
+
+```python
+class Student:
+
+    __slots__ = ("name", "age")
+
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+```
+
+This allows:
+
+```python
+s = Student("Rahul", 20)
+
+print(s.name)
+```
+
+but arbitrary new attributes such as:
+
+```python
+s.marks = 90
+```
+
+are generally not allowed unless `marks` is included in `__slots__`.
+
+---
+
+# 41. OOP Examples
+
+# Example 1 — Student Management
+
+```python
+class Student:
+
+    college = "ABC College"
+
+    def __init__(self, name, roll_no, marks):
+        self.name = name
+        self.roll_no = roll_no
+        self.marks = marks
+
+    def display(self):
+        print("Name:", self.name)
+        print("Roll No:", self.roll_no)
+        print("Marks:", self.marks)
+        print("College:", self.college)
+
+
+s1 = Student("Rahul", 101, 85)
+
+s1.display()
+```
+
+---
+
+# Example 2 — Bank Account
+
+```python
+class BankAccount:
+
+    def __init__(self, name, balance):
+        self.name = name
+        self.__balance = balance
+
+    def deposit(self, amount):
+
+        if amount > 0:
+            self.__balance += amount
+            print("Amount deposited")
+
+    def withdraw(self, amount):
+
+        if amount <= self.__balance:
+            self.__balance -= amount
+            print("Amount withdrawn")
+        else:
+            print("Insufficient balance")
+
+    def get_balance(self):
+        return self.__balance
+
+
+account = BankAccount("Rahul", 5000)
+
+account.deposit(1000)
+
+account.withdraw(2000)
+
+print(account.get_balance())
+```
+
+Concepts:
+
+```text
+Class
+Object
+Constructor
+Encapsulation
+Private variable
+Methods
+```
+
+---
+
+# Example 3 — Employee
+
+```python
+class Employee:
+
+    company = "ABC"
+
+    def __init__(self, name, salary):
+        self.name = name
+        self.salary = salary
+
+    def display(self):
+        print(self.name)
+        print(self.salary)
+
+
+e1 = Employee("Rahul", 40000)
+
+e1.display()
+```
+
+---
+
+# Example 4 — Rectangle
+
+```python
+class Rectangle:
+
+    def __init__(self, length, width):
+        self.length = length
+        self.width = width
+
+    def area(self):
+        return self.length * self.width
+
+    def perimeter(self):
+        return 2 * (self.length + self.width)
+
+
+r = Rectangle(10, 5)
+
+print("Area:", r.area())
+print("Perimeter:", r.perimeter())
+```
+
+---
+
+# Example 5 — Calculator
+
+```python
+class Calculator:
+
+    def add(self, a, b):
+        return a + b
+
+    def subtract(self, a, b):
+        return a - b
+
+    def multiply(self, a, b):
+        return a * b
+
+    def divide(self, a, b):
+
+        if b != 0:
+            return a / b
+
+        return "Cannot divide by zero"
+
+
+c = Calculator()
+
+print(c.add(10, 20))
+print(c.subtract(20, 10))
+print(c.multiply(5, 4))
+print(c.divide(20, 5))
+```
+
+---
+
+# Example 6 — Encapsulation
+
+```python
+class Employee:
+
+    def __init__(self, salary):
+        self.__salary = salary
+
+    def get_salary(self):
+        return self.__salary
+
+    def set_salary(self, salary):
+
+        if salary > 0:
+            self.__salary = salary
+        else:
+            print("Invalid salary")
+
+
+e = Employee(30000)
+
+print(e.get_salary())
+
+e.set_salary(40000)
+
+print(e.get_salary())
+```
+
+---
+
+# Example 7 — Abstraction
+
+```python
+from abc import ABC, abstractmethod
+
+
+class Payment(ABC):
+
+    @abstractmethod
+    def pay(self, amount):
+        pass
+
+
+class CreditCard(Payment):
+
+    def pay(self, amount):
+        print("Paid", amount, "using Credit Card")
+
+
+class UPI(Payment):
+
+    def pay(self, amount):
+        print("Paid", amount, "using UPI")
+
+
+p1 = CreditCard()
+p2 = UPI()
+
+p1.pay(1000)
+p2.pay(500)
+```
+
+---
+
+# Example 8 — Inheritance
+
+```python
+class Animal:
+
+    def eat(self):
+        print("Eating")
+
+
+class Dog(Animal):
+
+    def bark(self):
+        print("Barking")
+
+
+dog = Dog()
+
+dog.eat()
+dog.bark()
+```
+
+---
+
+# Example 9 — Multilevel Inheritance
+
+```python
+class Vehicle:
+
+    def start(self):
+        print("Vehicle starts")
+
+
+class Car(Vehicle):
+
+    def drive(self):
+        print("Car drives")
+
+
+class ElectricCar(Car):
+
+    def charge(self):
+        print("Charging")
+
+
+car = ElectricCar()
+
+car.start()
+car.drive()
+car.charge()
+```
+
+---
+
+# Example 10 — Multiple Inheritance
+
+```python
+class Father:
+
+    def father_skill(self):
+        print("Driving")
+
+
+class Mother:
+
+    def mother_skill(self):
+        print("Cooking")
+
+
+class Child(Father, Mother):
+
+    def child_skill(self):
+        print("Gaming")
+
+
+c = Child()
+
+c.father_skill()
+c.mother_skill()
+c.child_skill()
+```
+
+---
+
+# Example 11 — Method Overriding
+
+```python
+class Animal:
+
+    def sound(self):
+        print("Animal sound")
+
+
+class Dog(Animal):
+
+    def sound(self):
+        print("Bark")
+
+
+class Cat(Animal):
+
+    def sound(self):
+        print("Meow")
+
+
+Dog().sound()
+Cat().sound()
+```
+
+---
+
+# Example 12 — Polymorphism
+
+```python
+class Dog:
+
+    def sound(self):
+        print("Bark")
+
+
+class Cat:
+
+    def sound(self):
+        print("Meow")
+
+
+animals = [Dog(), Cat()]
+
+for animal in animals:
+    animal.sound()
+```
+
+---
+
+# Example 13 — Operator Overloading
+
+```python
+class Number:
+
+    def __init__(self, value):
+        self.value = value
+
+    def __add__(self, other):
+        return Number(self.value + other.value)
+
+    def display(self):
+        print(self.value)
+
+
+a = Number(10)
+b = Number(20)
+
+c = a + b
+
+c.display()
+```
+
+---
+
+# Example 14 — Composition
+
+```python
+class Engine:
+
+    def start(self):
+        print("Engine started")
+
+
+class Car:
+
+    def __init__(self):
+        self.engine = Engine()
+
+    def start(self):
+        self.engine.start()
+
+
+car = Car()
+
+car.start()
+```
+
+---
+
+# Example 15 — Property
+
+```python
+class Student:
+
+    def __init__(self, marks):
+        self._marks = marks
+
+    @property
+    def marks(self):
+        return self._marks
+
+    @marks.setter
+    def marks(self, value):
+
+        if 0 <= value <= 100:
+            self._marks = value
+        else:
+            print("Invalid marks")
+
+
+s = Student(80)
+
+print(s.marks)
+
+s.marks = 95
+
+print(s.marks)
+```
+
+---
+
+# 42. OOP Coding Questions
+
+Practice these without looking at the solutions above.
+
+## Beginner Level
+
+### Question 1
+
+Create a `Student` class with:
+
+* Name
+* Age
+* Marks
+
+Display all information.
+
+---
+
+### Question 2
+
+Create an `Employee` class with:
+
+* Name
+* Salary
+* Department
+
+Create three objects.
+
+---
+
+### Question 3
+
+Create a `Rectangle` class.
+
+Calculate:
+
+* Area
+* Perimeter
+
+---
+
+### Question 4
+
+Create a `Circle` class.
+
+Calculate:
+
+* Area
+* Circumference
+
+---
+
+### Question 5
+
+Create a `Calculator` class.
+
+Implement:
+
+```text
+Addition
+Subtraction
+Multiplication
+Division
+```
+
+---
+
+### Question 6
+
+Create a `BankAccount` class.
+
+Implement:
+
+```text
+Deposit
+Withdraw
+Balance
+```
+
+---
+
+### Question 7
+
+Create a `Car` class.
+
+Implement:
+
+```text
+Start
+Stop
+Accelerate
+```
+
+---
+
+### Question 8
+
+Create a `Book` class.
+
+Store:
+
+```text
+Title
+Author
+Price
+```
+
+Display the details.
+
+---
+
+### Question 9
+
+Create a `Mobile` class.
+
+Store:
+
+```text
+Brand
+Model
+Price
+```
+
+---
+
+### Question 10
+
+Create a `Product` class and calculate the total price after quantity.
+
+---
+
+# Encapsulation Coding Questions
+
+### Question 11
+
+Create a bank account with a private balance.
+
+Implement:
+
+```text
+deposit()
+withdraw()
+get_balance()
+```
+
+---
+
+### Question 12
+
+Create a `Student` class with private marks.
+
+Allow marks only between:
+
+```text
+0 and 100
+```
+
+---
+
+### Question 13
+
+Create an `Employee` class with private salary.
+
+Do not allow negative salary.
+
+---
+
+### Question 14
+
+Create a `User` class with a private password.
+
+Implement a method to verify the password.
+
+---
+
+### Question 15
+
+Create a `Temperature` class.
+
+Use a setter to prevent temperature below absolute zero.
+
+---
+
+# Abstraction Coding Questions
+
+### Question 16
+
+Create an abstract `Vehicle` class.
+
+Implement:
+
+```text
+Car
+Bike
+Truck
+```
+
+All should implement:
+
+```text
+start()
+```
+
+---
+
+### Question 17
+
+Create an abstract `Shape` class.
+
+Implement:
+
+```text
+Circle
+Rectangle
+Triangle
+```
+
+All should implement:
+
+```text
+area()
+```
+
+---
+
+### Question 18
+
+Create an abstract `Payment` class.
+
+Implement:
+
+```text
+UPI
+CreditCard
+Cash
+```
+
+---
+
+### Question 19
+
+Create an abstract `Employee` class.
+
+Implement:
+
+```text
+Manager
+Developer
+Tester
+```
+
+Each should calculate salary differently.
+
+---
+
+### Question 20
+
+Create an abstract `Animal` class.
+
+Implement:
+
+```text
+Dog
+Cat
+Cow
+```
+
+Each should implement:
+
+```text
+sound()
+```
+
+---
+
+# Inheritance Coding Questions
+
+### Question 21
+
+Create:
+
+```text
+Animal
+ ↓
+Dog
+```
+
+---
+
+### Question 22
+
+Create:
+
+```text
+Vehicle
+ ↓
+Car
+ ↓
+ElectricCar
+```
+
+---
+
+### Question 23
+
+Create:
+
+```text
+Person
+ ↓
+Student
+ ↓
+CollegeStudent
+```
+
+---
+
+### Question 24
+
+Create:
+
+```text
+Employee
+ ↓
+Manager
+Developer
+```
+
+---
+
+### Question 25
+
+Demonstrate multiple inheritance using:
+
+```text
+Father
+Mother
+   ↓
+Child
+```
+
+---
+
+# Polymorphism Coding Questions
+
+### Question 26
+
+Create `Dog` and `Cat`.
+
+Both must implement:
+
+```text
+sound()
+```
+
+Call them using the same loop.
+
+---
+
+### Question 27
+
+Create:
+
+```text
+Circle
+Rectangle
+Triangle
+```
+
+Each should have:
+
+```text
+area()
+```
+
+Store them in a list and calculate their areas polymorphically.
+
+---
+
+### Question 28
+
+Create:
+
+```text
+UPI
+CreditCard
+Cash
+```
+
+Each must implement:
+
+```text
+pay()
+```
+
+Process all payments using one function.
+
+---
+
+### Question 29
+
+Demonstrate duck typing using two unrelated classes.
+
+---
+
+### Question 30
+
+Demonstrate operator overloading using `__add__()`.
+
+---
+
+# Intermediate OOP Coding Questions
+
+### Question 31
+
+Create a `Library` class.
+
+Implement:
+
+```text
+Add book
+Remove book
+Search book
+Display books
+```
+
+---
+
+### Question 32
+
+Create a `Bank` system using:
+
+```text
+Bank
+Account
+Customer
+```
+
+Use composition where appropriate.
+
+---
+
+### Question 33
+
+Create a `ShoppingCart`.
+
+Implement:
+
+```text
+Add product
+Remove product
+Calculate total
+Display cart
+```
+
+---
+
+### Question 34
+
+Create a `Hospital` system using:
+
+```text
+Doctor
+Patient
+Hospital
+```
+
+---
+
+### Question 35
+
+Create a `Hotel` booking system using classes.
+
+Include:
+
+```text
+Room
+Customer
+Booking
+Hotel
+```
+
+---
+
+### Question 36
+
+Create a `School Management System`.
+
+Classes:
+
+```text
+Student
+Teacher
+Course
+School
+```
+
+---
+
+### Question 37
+
+Create an employee management system.
+
+Classes:
+
+```text
+Employee
+Manager
+Developer
+Tester
+```
+
+Use inheritance and polymorphism.
+
+---
+
+### Question 38
+
+Create a payment system using abstraction and polymorphism.
+
+---
+
+### Question 39
+
+Create a notification system.
+
+Implement:
+
+```text
+Email
+SMS
+PushNotification
+```
+
+Each should implement:
+
+```text
+send()
+```
+
+---
+
+### Question 40
+
+Create a simple food delivery system.
+
+Classes:
+
+```text
+Customer
+Restaurant
+Food
+Order
+Delivery
+```
+
+Use composition and polymorphism.
+
+---
+
+
+# 43. Quick Syntax Cheat Sheet
+
+## Class
+
+```python
+class Student:
+    pass
+```
+
+## Object
+
+```python
+s = Student()
+```
+
+## Constructor
+
+```python
+def __init__(self):
+    pass
+```
+
+## Instance Variable
+
+```python
+self.name = name
+```
+
+## Instance Method
+
+```python
+def display(self):
+    pass
+```
+
+## Class Variable
+
+```python
+class Student:
+
+    college = "ABC"
+```
+
+## Class Method
+
+```python
+@classmethod
+def method(cls):
+    pass
+```
+
+## Static Method
+
+```python
+@staticmethod
+def method():
+    pass
+```
+
+## Inheritance
+
+```python
+class Child(Parent):
+    pass
+```
+
+## Multiple Inheritance
+
+```python
+class Child(Parent1, Parent2):
+    pass
+```
+
+## Private Variable
+
+```python
+self.__data
+```
+
+## Protected Convention
+
+```python
+self._data
+```
+
+## Property
+
+```python
+@property
+def data(self):
+    return self._data
+```
+
+## Setter
+
+```python
+@data.setter
+def data(self, value):
+    self._data = value
+```
+
+## Abstract Class
+
+```python
+from abc import ABC, abstractmethod
+
+class Animal(ABC):
+    pass
+```
+
+## Abstract Method
+
+```python
+@abstractmethod
+def sound(self):
+    pass
+```
+
+## Parent Method
+
+```python
+super().method()
+```
+
+## Parent Constructor
+
+```python
+super().__init__()
+```
+
+## Method Overriding
+
+```python
+class Child(Parent):
+
+    def method(self):
+        pass
+```
+
+## Operator Overloading
+
+```python
+def __add__(self, other):
+    pass
+```
+
+## String Representation
+
+```python
+def __str__(self):
+    return "text"
+```
+
+## Object Type
+
+```python
+type(obj)
+```
+
+## Instance Check
+
+```python
+isinstance(obj, ClassName)
+```
+
+## Subclass Check
+
+```python
+issubclass(Child, Parent)
+```
+
+## MRO
+
+```python
+ClassName.mro()
+```
+
+---
+
+# Four Pillars — Syntax 
+
+## Encapsulation
+
+```python
+class Student:
+
+    def __init__(self, marks):
+        self.__marks = marks
+
+    def get_marks(self):
+        return self.__marks
+
+    def set_marks(self, marks):
+        self.__marks = marks
+```
+
+---
+
+## Abstraction
+
+```python
+from abc import ABC, abstractmethod
+
+
+class Animal(ABC):
+
+    @abstractmethod
+    def sound(self):
+        pass
+```
+
+---
+
+## Inheritance
+
+```python
+class Parent:
+
+    def display(self):
+        print("Parent")
+
+
+class Child(Parent):
+    pass
+```
+
+---
+
+## Polymorphism
+
+```python
+class Dog:
+
+    def sound(self):
+        print("Bark")
+
+
+class Cat:
+
+    def sound(self):
+        print("Meow")
+
+
+animals = [Dog(), Cat()]
+
+for animal in animals:
+    animal.sound()
+```
+
+---
+
